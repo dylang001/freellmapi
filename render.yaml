@@ -9,7 +9,7 @@ services:
     healthCheckPath: /v1/models
     envVars:
       - key: ENCRYPTION_KEY
-        generateValue: true
+        sync: false  # Must be 64 hex chars (32 bytes). Generate with: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
       - key: PORT
         value: "3001"
       - key: NODE_ENV
