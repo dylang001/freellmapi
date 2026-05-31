@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: freellmapi
+    runtime: node
+    region: oregon
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: node server/dist/index.js
+    healthCheckPath: /v1/models
+    envVars:
+      - key: ENCRYPTION_KEY
+        generateValue: true
+      - key: PORT
+        value: "3001"
+      - key: NODE_ENV
+        value: production
