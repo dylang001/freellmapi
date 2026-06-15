@@ -20,6 +20,7 @@ describe('isRetryableError', () => {
     it('treats explicit "404" in the error message as retryable', () => {
       expect(isRetryableError(new Error('OpenRouter API error 404: Provider returned error'))).toBe(true);
       expect(isRetryableError(new Error('Groq API error 404: model not found'))).toBe(true);
+      expect(isRetryableError(new Error("NVIDIA API error 410: model has reached end of life"))).toBe(true);
     });
 
     it('catches OpenRouter\'s "No endpoints found" phrasing for deprecated models', () => {
