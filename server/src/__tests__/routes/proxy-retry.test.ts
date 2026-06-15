@@ -37,6 +37,8 @@ describe('isRetryableError', () => {
       expect(isRetryableError(new Error('429 Too Many Requests'))).toBe(true);
       expect(isRetryableError(new Error('rate limit exceeded'))).toBe(true);
       expect(isRetryableError(new Error('quota exhausted'))).toBe(true);
+      expect(isRetryableError(new Error('HuggingFace Router API error 402: Payment Required'))).toBe(true);
+      expect(isRetryableError(new Error('402 Out of credits'))).toBe(true);
     });
 
     it('5xx and network errors are retryable', () => {

@@ -206,7 +206,8 @@ const chatCompletionSchema = z.object({
 
 export function isRetryableError(err: any): boolean {
   const msg = (err.message ?? '').toLowerCase();
-  return msg.includes('429') || msg.includes('rate limit') || msg.includes('too many requests')
+  return msg.includes('402') || msg.includes('payment required') || msg.includes('out of credits')
+    || msg.includes('429') || msg.includes('rate limit') || msg.includes('too many requests')
     || msg.includes('quota') || msg.includes('resource_exhausted')
     || msg.includes('aborted') || msg.includes('timeout') || msg.includes('etimedout')
     || msg.includes('econnrefused') || msg.includes('econnreset')
